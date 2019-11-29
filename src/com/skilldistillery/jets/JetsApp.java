@@ -1,14 +1,15 @@
 package com.skilldistillery.jets;
 
+
+
 public class JetsApp {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		JetsApp ja = new JetsApp();
+		ja.run();
 	}
 	
-	public void addPlanes() {
-		
+	public void run() {
 		
 	}
 	
