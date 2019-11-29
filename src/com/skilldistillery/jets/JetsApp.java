@@ -6,5 +6,12 @@ public class JetsApp {
 		// TODO Auto-generated method stub
 
 	}
+	
+	public void addPlanes() {
+		
+		
+	}
+	
+	
 
 }
