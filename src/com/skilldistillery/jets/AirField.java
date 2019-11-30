@@ -10,5 +10,11 @@ public class AirField {
 	
 	public AirField() {
 		jets = new ArrayList<>();
+		
+	}
+	
+	public List<Jet> addStarters(){
+//		JetImpl addJet = new JetImpl();
+//		jets.addAll(addJet.starterPlanes());
 	}
 }

@@ -1,3 +1,6 @@
 model , speed (mph), range (miles), price (dollar)
-F-35 Lightning II, 913.45, 1200,  85_000_000
-F-22 Raptor, 1141.81, 1800, 150_000_000
+F-35 Lightning II, 913.45, 1200,  85_000_000, Fighter
+F-22 Raptor, 1141.81, 1800, 150_000_000, Fighter
+C-5A Super Galaxy, 590.3, 3728, 224_290_000, Carrier
+Kawasaki C-2, 553.02, 4039, 136_000_000, Carrier
+Mitsubishi F-2, 1320, 518, 127_000_000, Fighter

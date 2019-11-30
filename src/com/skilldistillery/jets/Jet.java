@@ -5,8 +5,9 @@ public class Jet {
 	private double speed;
 	private int range;
 	private long price;
+	private String type;
 
-	public Jet(String model, double speed, int range, long price) {
+	public Jet(String model, double speed, int range, long price, String type) {
 	}
 
 	public void fly() {
@@ -60,5 +61,13 @@ public class Jet {
 
 	public void setPrice(long price) {
 		this.price = price;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	};
 }
