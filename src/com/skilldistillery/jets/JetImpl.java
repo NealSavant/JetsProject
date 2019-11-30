@@ -10,32 +10,7 @@ public class JetImpl extends Jet {
 	public JetImpl(String model, double speed, int range, long price, String type) {
 		super(model, speed, range, price, type);
 	}
-
 	
-	public List<Jet> starterPlanes() {
-		List<Jet> jets = new ArrayList<>();
-		try (BufferedReader br = new BufferedReader(new FileReader("jets.txt"))) {
-			String line;
-			// read file
-			while ((line = br.readLine()) != null) {
-				br.readLine(); // eat first line
-				// comma separated data file
-				String[] jetAdd = line.split(", ");
-				// populate string
-				String jetModel = jetAdd[0];
-				double jetSpeed = Double.parseDouble(jetAdd[1]);
-				int jetRange = Integer.parseInt(jetAdd[2]);
-				long jetPrice = Long.parseLong(jetAdd[3]);
-				String jetType = jetAdd[4];
-				// populate jet object
-				Jet j = new Jet(jetModel, jetSpeed, jetRange, jetPrice, jetType);
-				jets.add(j);
-			}
-		} catch (IOException e) {
-			System.err.println(e);
-		}
-
-		return jets;
-	}
+	
 
 }

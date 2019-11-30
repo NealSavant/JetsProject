@@ -8,6 +8,12 @@ public class Jet {
 	private String type;
 
 	public Jet(String model, double speed, int range, long price, String type) {
+		super();
+		this.model = model;
+		this.speed = speed;
+		this.range = range;
+		this.price = price;
+		this.type = type;
 	}
 
 	public void fly() {
@@ -69,5 +75,6 @@ public class Jet {
 
 	public void setType(String type) {
 		this.type = type;
-	};
+	}
+
 }
