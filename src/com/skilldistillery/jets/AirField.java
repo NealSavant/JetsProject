@@ -7,25 +7,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AirField {
-	
+
 	private List<Jet> jets;
-	
+
 	public AirField() {
 		jets = new ArrayList<>();
-		
+
 	}
-	
-	public void addStarters(){
-		try{
-			jets.addAll(starterPlanes());
-		}catch(NullPointerException e) {
-			e.printStackTrace();
-		}
+
+	public void addStarters() {
+		jets.addAll(starterPlanes());
+		
+		
 
 	}
 	
-	
-	//starter planes are added at start of program
+	public void listJets() {
+		for(Jet jet : jets) {
+			System.out.println(jet.toString());
+		}
+	}
+
+	// starter planes are added at start of program
 	public List<Jet> starterPlanes() {
 		List<Jet> jets = new ArrayList<>();
 		try (BufferedReader br = new BufferedReader(new FileReader("jets"))) {
@@ -47,11 +50,9 @@ public class AirField {
 				if (jetType.equals("Carrier")) {
 					Jet j = new CargoPlane(jetModel, jetSpeed, jetRange, jetPrice, jetType);
 					jets.add(j);
-					System.out.println(j.toString());
 				} else if (jetType.equals("Fighter")) {
 					Jet j = new FighterJet(jetModel, jetSpeed, jetRange, jetPrice, jetType);
 					jets.add(j);
-					System.out.println(j.toString());
 				}
 
 			}
