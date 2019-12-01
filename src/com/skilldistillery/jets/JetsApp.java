@@ -7,8 +7,7 @@ import java.util.Scanner;
 public class JetsApp {
 	// f i e l d s
 	private AirField airfield;
-	private JetImpl placeJets;
-	private Jet jet;
+	private List<Jet> jets;
 	public boolean programOn;
 	public Scanner userInput;
 
@@ -54,20 +53,39 @@ public class JetsApp {
 			airfield.listJets();
 			break;
 		case 2:
+			System.out.println("\t-- Flying All Jets --");
 			flyJets();
+			System.out.println();
+			break;
+		case 3:
+			viewFastestJet();
 			break;
 		case 9:
 			programOn = false;
 			break;
 		}
 	}
-	
+
 	public void flyJets() {
-		List<Jet> jets = new ArrayList<>(); //create array list
-		jets.addAll(airfield.getJets()); //get jets from airfield
-		for(Jet jet : jets) {
+		jets = new ArrayList<>(); // create array list
+		jets.addAll(airfield.getJets()); // get jets from airfield
+		for (Jet jet : jets) {
 			jet.fly();
 		}
+	}
+
+	public void viewFastestJet() {
+		jets = new ArrayList<>();
+		jets.addAll(airfield.getJets());
+		double fastestSpeed = 0.0;
+		int indexOfFastestJet = 0;
+		for (int i = 0; i < jets.size(); i++) {
+			if (jets.get(i).getSpeed() > fastestSpeed) {
+				indexOfFastestJet = i;
+			}
+		}
+		System.out.println("\t-- Fastest Jet in the fleet -- ");
+		System.out.println(jets.get(indexOfFastestJet).toString() + "\n");
 	}
 
 }
