@@ -9,7 +9,8 @@ import java.util.List;
 public class AirField {
 
 	private List<Jet> jets;
-
+	private List<CargoPlane> planes;
+	
 	public AirField() {
 		jets = new ArrayList<>();
 
@@ -17,18 +18,26 @@ public class AirField {
 
 	public void addStarters() {
 		jets.addAll(starterPlanes());
-		
-		
 
 	}
-	
+
 	public void listJets() {
-		for(Jet jet : jets) {
+		for (Jet jet : jets) {
 			System.out.println(jet.toString());
 		}
 	}
-	
-	public List<Jet> getJets(){
+
+	public List<CargoPlane> getCargoPlanes() {
+		planes = new ArrayList<>();
+		for(int i = 0; i < jets.size(); i++) {
+			if(jets.get(i).getType().equals("Carrier")) {
+				planes.add((CargoPlane) jets.get(i));
+			}
+		}
+		return planes;
+	}
+
+	public List<Jet> getJets() {
 		return this.jets;
 	}
 

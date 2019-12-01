@@ -63,6 +63,11 @@ public class JetsApp {
 		case 4:
 			viewLongestRangeJet();
 			break;
+		case 5:
+			System.out.println();
+			loadCargoPlanes();
+			System.out.println();
+			break;
 		case 9:
 			programOn = false;
 			break;
@@ -105,6 +110,16 @@ public class JetsApp {
 		}
 		System.out.println("\t-- Jet with longest range in the fleet -- ");
 		System.out.println(jets.get(indexOfLongestRangeJet).toString() + "\n");
+	}
+	
+	public void loadCargoPlanes() {
+		List<CargoPlane> planes = new ArrayList<>(); // create array list
+		planes.addAll(airfield.getCargoPlanes()); // get jets from airfield
+		for (CargoPlane jet : planes) {
+			if(jet.getType().equals("Carrier") && jet.getCargoStatus() == false){
+				jet.loadCargo();
+			}
+		}
 	}
 
 }
