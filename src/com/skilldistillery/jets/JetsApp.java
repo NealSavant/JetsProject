@@ -60,6 +60,9 @@ public class JetsApp {
 		case 3:
 			viewFastestJet();
 			break;
+		case 4:
+			viewLongestRangeJet();
+			break;
 		case 9:
 			programOn = false;
 			break;
@@ -81,11 +84,27 @@ public class JetsApp {
 		int indexOfFastestJet = 0;
 		for (int i = 0; i < jets.size(); i++) {
 			if (jets.get(i).getSpeed() > fastestSpeed) {
+				fastestSpeed = jets.get(i).getSpeed();
 				indexOfFastestJet = i;
 			}
 		}
 		System.out.println("\t-- Fastest Jet in the fleet -- ");
 		System.out.println(jets.get(indexOfFastestJet).toString() + "\n");
+	}
+	
+	public void viewLongestRangeJet() {
+		jets = new ArrayList<>();
+		jets.addAll(airfield.getJets());
+		double longestRange = 0.0;
+		int indexOfLongestRangeJet = 0;
+		for (int i = 0; i < jets.size(); i++) {
+			if (jets.get(i).getRange() > longestRange) {
+				longestRange = jets.get(i).getRange();
+				indexOfLongestRangeJet = i;
+			}
+		}
+		System.out.println("\t-- Jet with longest range in the fleet -- ");
+		System.out.println(jets.get(indexOfLongestRangeJet).toString() + "\n");
 	}
 
 }
