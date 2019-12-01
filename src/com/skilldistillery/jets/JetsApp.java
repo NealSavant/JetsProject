@@ -1,11 +1,14 @@
 package com.skilldistillery.jets;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class JetsApp {
 	// f i e l d s
 	private AirField airfield;
 	private JetImpl placeJets;
+	private Jet jet;
 	public boolean programOn;
 	public Scanner userInput;
 
@@ -50,10 +53,20 @@ public class JetsApp {
 		case 1:
 			airfield.listJets();
 			break;
+		case 2:
+			flyJets();
+			break;
 		case 9:
 			programOn = false;
-			
-			
+			break;
+		}
+	}
+	
+	public void flyJets() {
+		List<Jet> jets = new ArrayList<>(); //create array list
+		jets.addAll(airfield.getJets()); //get jets from airfield
+		for(Jet jet : jets) {
+			jet.fly();
 		}
 	}
 

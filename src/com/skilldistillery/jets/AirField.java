@@ -27,6 +27,10 @@ public class AirField {
 			System.out.println(jet.toString());
 		}
 	}
+	
+	public List<Jet> getJets(){
+		return this.jets;
+	}
 
 	// starter planes are added at start of program
 	public List<Jet> starterPlanes() {

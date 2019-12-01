@@ -1,4 +1,5 @@
 package com.skilldistillery.jets;
+import java.text.DecimalFormat;
 
 public class Jet {
 	private String model;
@@ -17,19 +18,11 @@ public class Jet {
 	}
 
 	public void fly() {
+		DecimalFormat df = new DecimalFormat("#.###");
+		double hoursToFly = Double.valueOf(df.format(range / speed));
+		System.out.println(model + " will fly for " + hoursToFly + " hours." );
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 //
 // G E T T E R S  / S E T T E R S
 //
