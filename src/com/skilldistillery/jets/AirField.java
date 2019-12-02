@@ -26,6 +26,9 @@ public class AirField {
 			System.out.println(jet.toString());
 		}
 	}
+	public void addjet(JetImpl jet) {
+		jets.add(jet);
+	}
 
 	public List<CargoPlane> getCargoPlanes() {
 		planes = new ArrayList<>();

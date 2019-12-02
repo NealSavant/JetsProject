@@ -1,6 +1,7 @@
 package com.skilldistillery.jets;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -53,9 +54,7 @@ public class JetsApp {
 			airfield.listJets();
 			break;
 		case 2:
-			System.out.println("\t-- Flying All Jets --");
 			flyJets();
-			System.out.println();
 			break;
 		case 3:
 			viewFastestJet();
@@ -64,9 +63,10 @@ public class JetsApp {
 			viewLongestRangeJet();
 			break;
 		case 5:
-			System.out.println();
 			loadCargoPlanes();
-			System.out.println();
+			break;
+		case 7:
+			addCustomJet();
 			break;
 		case 9:
 			programOn = false;
@@ -77,9 +77,11 @@ public class JetsApp {
 	public void flyJets() {
 		jets = new ArrayList<>(); // create array list
 		jets.addAll(airfield.getJets()); // get jets from airfield
+		System.out.println("\t-- Flying All Jets --");
 		for (Jet jet : jets) {
 			jet.fly();
 		}
+		System.out.println();
 	}
 
 	public void viewFastestJet() {
@@ -96,7 +98,7 @@ public class JetsApp {
 		System.out.println("\t-- Fastest Jet in the fleet -- ");
 		System.out.println(jets.get(indexOfFastestJet).toString() + "\n");
 	}
-	
+
 	public void viewLongestRangeJet() {
 		jets = new ArrayList<>();
 		jets.addAll(airfield.getJets());
@@ -111,15 +113,82 @@ public class JetsApp {
 		System.out.println("\t-- Jet with longest range in the fleet -- ");
 		System.out.println(jets.get(indexOfLongestRangeJet).toString() + "\n");
 	}
-	
+
 	public void loadCargoPlanes() {
 		List<CargoPlane> planes = new ArrayList<>(); // create array list
 		planes.addAll(airfield.getCargoPlanes()); // get jets from airfield
+		System.out.println("\t-- Loading Cargo Carriers --");
 		for (CargoPlane jet : planes) {
-			if(jet.getType().equals("Carrier") && jet.getCargoStatus() == false){
+			if (jet.getType().equals("Carrier") && jet.getCargoStatus() == false) {
 				jet.loadCargo();
 			}
 		}
+		System.out.println();
+	}
+
+	public void addCustomJet() {
+		userInput = new Scanner(System.in);
+		//variables
+		String model = null;
+		double speed = 0.0;
+		int range = 0;
+		long price = 0;
+		String type = null;
+		
+		System.out.println("What is the model name?");
+		model = userInput.nextLine();
+		boolean validSpeed = false;
+		while (!validSpeed) {
+			System.out.println("What is the speed in mph?");
+			try {
+				speed = userInput.nextDouble();
+				validSpeed = true;
+			} catch (InputMismatchException e) {
+				System.out.println("Not a double.");
+				userInput.nextLine();
+			}
+		}
+		
+		boolean validRange = false;
+		while(!validRange) {
+			System.out.println("What is the flying range in miles?");
+			try {
+				range = userInput.nextInt();
+				validRange = true;
+			}
+			catch(InputMismatchException e) {
+				System.out.println("Not an integer.");
+				userInput.nextLine();
+			}
+		}
+		
+		boolean validPrice = false;
+		while(!validPrice) {
+			System.out.println("What is the price?");
+			try {
+				price = userInput.nextLong();
+				validPrice = true;
+			}
+			catch(InputMismatchException e) {
+				System.out.println("Not a long value.");
+				userInput.nextLine();
+			}
+		}
+		boolean isValid = false;
+		while(!isValid) {
+			System.out.println("Is it a Carrier or Fighter?");
+			type = userInput.next();
+			
+			if(type.equals("Carrier") || type.equals("Fighter")) {
+				isValid = true;
+			} else {
+				userInput.nextLine();
+			}
+			
+		}
+		
+		JetImpl newJet = new JetImpl(model, speed, range, price, type);
+		airfield.addjet(newJet);
 	}
 
 }
