@@ -2,7 +2,7 @@
 
 ### Overview
 
-Program creates a list of jets with different capabilities. The user can view information on the jets as well as add and remove jets from the list.
+Program creates a list of jets with different capabilities. The user can view information on the jets as well as add and remove jets from the list. Carrier planes and fighter jets are subclasses of Jet and implement unique interfaces.
 
 ### Concepts
 
