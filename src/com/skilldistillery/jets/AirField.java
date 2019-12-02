@@ -10,7 +10,8 @@ public class AirField {
 
 	private List<Jet> jets;
 	private List<CargoPlane> planes;
-	
+	private List<FighterJet> fighters;
+
 	public AirField() {
 		jets = new ArrayList<>();
 
@@ -28,11 +29,11 @@ public class AirField {
 			number++;
 		}
 	}
-	
-	
+
 	public void addjet(Jet jet) {
 		jets.add(jet);
 	}
+
 	public void removeJet(int index) {
 		System.out.println("\t-- Removed " + jets.get(index).getModel() + " from the airfield --");
 		jets.remove(index);
@@ -40,12 +41,22 @@ public class AirField {
 
 	public List<CargoPlane> getCargoPlanes() {
 		planes = new ArrayList<>();
-		for(int i = 0; i < jets.size(); i++) {
-			if(jets.get(i).getType().equals("Carrier")) {
+		for (int i = 0; i < jets.size(); i++) {
+			if (jets.get(i).getType().equals("Carrier")) {
 				planes.add((CargoPlane) jets.get(i));
 			}
 		}
 		return planes;
+	}
+
+	public List<FighterJet> getFighterJets() {
+		fighters = new ArrayList<>();
+		for (int i = 0; i < jets.size(); i++) {
+			if (jets.get(i).getType().equals("Fighter")) {
+				fighters.add((FighterJet) jets.get(i));
+			}
+		}
+		return fighters;
 	}
 
 	public List<Jet> getJets() {

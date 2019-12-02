@@ -27,7 +27,7 @@ public class Jet {
 // G E T T E R S  / S E T T E R S
 //
 	public double getSpeedInMach() {
-		return 0.0;
+		return (this.speed * 0.00130332);
 	}
 
 	public String getModel() {
