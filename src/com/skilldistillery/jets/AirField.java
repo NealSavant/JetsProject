@@ -22,12 +22,20 @@ public class AirField {
 	}
 
 	public void listJets() {
+		int number = 1;
 		for (Jet jet : jets) {
-			System.out.println(jet.toString());
+			System.out.println(number + ". " + jet.toString());
+			number++;
 		}
 	}
-	public void addjet(JetImpl jet) {
+	
+	
+	public void addjet(Jet jet) {
 		jets.add(jet);
+	}
+	public void removeJet(int index) {
+		System.out.println("\t-- Removed " + jets.get(index).getModel() + " from the airfield --");
+		jets.remove(index);
 	}
 
 	public List<CargoPlane> getCargoPlanes() {

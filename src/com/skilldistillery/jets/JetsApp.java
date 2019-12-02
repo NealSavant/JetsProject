@@ -68,6 +68,9 @@ public class JetsApp {
 		case 7:
 			addCustomJet();
 			break;
+		case 8:
+			removeJet();
+			break;
 		case 9:
 			programOn = false;
 			break;
@@ -179,16 +182,31 @@ public class JetsApp {
 			System.out.println("Is it a Carrier or Fighter?");
 			type = userInput.next();
 			
-			if(type.equals("Carrier") || type.equals("Fighter")) {
+			if(type.equals("Carrier") ) {
 				isValid = true;
-			} else {
+				CargoPlane newJet = new CargoPlane(model, speed, range, price, type);
+				airfield.addjet(newJet);
+			} 
+			if(type.equals("Fighter")) {
+				isValid = true;
+				FighterJet newJet = new FighterJet(model, speed, range, price, type);
+				airfield.addjet(newJet);
+			}
+			else {
 				userInput.nextLine();
 			}
-			
+	
 		}
+		System.out.println("\t-- New Jet added to airfield --");
+	}
+	
+	public void removeJet() {
+		userInput = new Scanner(System.in);
+		System.out.println("\t-- Enter Jet number to remove --");
+		airfield.listJets();
+		int number = userInput.nextInt();
+		airfield.removeJet(number-1); //array starts at 0
 		
-		JetImpl newJet = new JetImpl(model, speed, range, price, type);
-		airfield.addjet(newJet);
 	}
 
 }
