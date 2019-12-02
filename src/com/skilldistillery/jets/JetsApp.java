@@ -65,6 +65,9 @@ public class JetsApp {
 		case 5:
 			loadCargoPlanes();
 			break;
+		case 6:
+			System.out.println("Not implemented");
+			break;
 		case 7:
 			addCustomJet();
 			break;
